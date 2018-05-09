@@ -16,7 +16,7 @@
             android:id="@+id/edit_yourslackId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="SlackId"
+            android:hint="Username"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
             android:textSize="24sp"

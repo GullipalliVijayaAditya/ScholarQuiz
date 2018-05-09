@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     private void showSignUpDialog() {
         AlertDialog.Builder alertDailog = new AlertDialog.Builder(MainActivity.this);
         alertDailog.setTitle("Sign Up");
@@ -140,9 +142,9 @@ public class MainActivity extends AppCompatActivity {
         alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                final User user = new User(editYourSlackId.getText().toString(),
-                        editNewPassword.getText().toString(),
-                        editNewEmail.getText().toString());
+                final User user = new User(editYourSlackId.getText().toString().trim(),
+                        editNewPassword.getText().toString().trim(),
+                        editNewEmail.getText().toString().trim());
 
                 users.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -154,6 +156,9 @@ public class MainActivity extends AppCompatActivity {
                                     .setValue(user);
                             Toast.makeText(MainActivity.this, "User registration success!", Toast.LENGTH_SHORT).show();
                         }
+
+
+
                     }
 
 
@@ -167,5 +172,7 @@ public class MainActivity extends AppCompatActivity {
         });
         alertDailog.show();
     }
+
+
 
 }

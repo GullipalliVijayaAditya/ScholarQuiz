@@ -5,7 +5,8 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/color7"
+
     tools:context=".MainActivity">
 
     <ImageView
@@ -13,8 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/wrap_login"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/logo" />
+
+        android:src="@drawable/logo"
+        android:layout_margin="20dp"/>
 
 
     <LinearLayout
@@ -38,20 +40,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-
+android:background="@color/color1"
                 android:padding="16dp">
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/slackId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="SlackId"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/colorPrimary"
+                    android:hint="Username"
+                    android:textColor="#000"
+                    android:textColorHint="#ffffff"
                     android:textSize="24sp"
-                    app:met_baseColor="@color/colorPrimary"
+                    app:met_baseColor="#ffffff"
                     app:met_floatingLabel="highlight"
-                    app:met_primaryColor="@color/colorPrimary"
+                    app:met_primaryColor="#ffffff"
                     app:met_singleLineEllipsis="true" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
@@ -60,12 +62,12 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/colorPrimary"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
                     android:textSize="24sp"
-                    app:met_baseColor="@color/colorPrimary"
+                    app:met_baseColor="#ffffff"
                     app:met_floatingLabel="highlight"
-                    app:met_primaryColor="@color/colorPrimary"
+                    app:met_primaryColor="#ffffff"
                     app:met_singleLineEllipsis="true" />
 
 
@@ -107,20 +109,5 @@
 
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/text_forgetpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="Forget Password ?"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-
-
-
 
 </RelativeLayout>
