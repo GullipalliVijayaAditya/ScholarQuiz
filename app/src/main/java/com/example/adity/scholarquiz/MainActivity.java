@@ -105,13 +105,17 @@ public class MainActivity extends AppCompatActivity {
 
                 } else
                     Toast.makeText(MainActivity.this, "User is not exits", Toast.LENGTH_SHORT).show();
+
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+
 
 
     }
