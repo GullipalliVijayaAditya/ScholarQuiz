@@ -26,8 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class MainActivity extends AppCompatActivity {
-    MaterialEditText editYourSlackId, editNewPassword, editNewEmail;  // sign up
-    MaterialEditText editSlackId, editPassword; //sign in
+    MaterialEditText editYourUserId, editNewPassword, editNewEmail;  // sign up
+    MaterialEditText editUserId, editPassword; //sign in
 
     Button buttonSignUp, buttonSignIn;
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         //Firebase
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
-        editSlackId = (MaterialEditText) findViewById(R.id.slackId);
+        editUserId = (MaterialEditText) findViewById(R.id.userId);
         editPassword = (MaterialEditText) findViewById(R.id.password);
 
         buttonSignIn = (Button) findViewById(R.id.button_signIn);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn(editSlackId.getText().toString(), editPassword.getText().toString());
+                signIn(editUserId.getText().toString(), editPassword.getText().toString());
             }
         });
     }
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View signup_layout = inflater.inflate(R.layout.signup_layout, null);
 
-        editYourSlackId = (MaterialEditText) signup_layout.findViewById(R.id.edit_yourslackId);
+        editYourUserId = (MaterialEditText) signup_layout.findViewById(R.id.edit_youruserId);
         editNewEmail = (MaterialEditText) signup_layout.findViewById(R.id.edit_youremailId);
         editNewPassword = (MaterialEditText) signup_layout.findViewById(R.id.edit_yourpassword);
 
@@ -146,17 +146,17 @@ public class MainActivity extends AppCompatActivity {
         alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                final User user = new User(editYourSlackId.getText().toString().trim(),
+                final User user = new User(editYourUserId.getText().toString().trim(),
                         editNewPassword.getText().toString().trim(),
                         editNewEmail.getText().toString().trim());
 
                 users.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child(user.getSlackId()).exists())
+                        if (dataSnapshot.child(user.getUserId()).exists())
                             Toast.makeText(MainActivity.this, "User already exits !", Toast.LENGTH_SHORT).show();
                         else {
-                            users.child(user.getSlackId())
+                            users.child(user.getUserId())
                                     .setValue(user);
                             Toast.makeText(MainActivity.this, "User registration success!", Toast.LENGTH_SHORT).show();
                         }

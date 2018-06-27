@@ -13,7 +13,7 @@
         android:padding="20dp">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edit_yourslackId"
+            android:id="@+id/edit_youruserId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"

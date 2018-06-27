@@ -1,7 +1,7 @@
 package com.example.adity.scholarquiz.Model;
 
 public class User {
-    private String slackId;
+    private String userId;
     private String password;
     private String email;
 
@@ -9,18 +9,18 @@ public class User {
 
     }
 
-    public User(String slackId, String password, String email) {
-        this.slackId = slackId;
+    public User(String userId, String password, String email) {
+        this.userId = userId;
         this.password = password;
         this.email = email;
     }
 
-    public String getSlackId() {
-        return slackId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setSlackId(String slackId) {
-        this.slackId = slackId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {

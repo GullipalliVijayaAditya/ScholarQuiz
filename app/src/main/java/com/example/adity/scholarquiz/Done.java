@@ -58,11 +58,11 @@ public class Done extends AppCompatActivity {
             progressBar.setProgress(correctAnswer);
 
 //Upload point to DB
-            question_score.child(String.format("%s_%s", Common.currentUser.getSlackId(),
+            question_score.child(String.format("%s_%s", Common.currentUser.getUserId(),
                     Common.categoryId))
-                    .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getSlackId(),
+                    .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getUserId(),
                             Common.categoryId),
-                            Common.currentUser.getSlackId(),
+                            Common.currentUser.getUserId(),
                             String.valueOf(score),
                             Common.categoryId,
                             Common.categoryName));

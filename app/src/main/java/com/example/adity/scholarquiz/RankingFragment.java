@@ -69,11 +69,11 @@ public class RankingFragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         rankingList.setLayoutManager(layoutManager);
 
-        updateScore(Common.currentUser.getSlackId(), new RankingCallBack<Ranking>() {
+        updateScore(Common.currentUser.getUserId(), new RankingCallBack<Ranking>() {
             @Override
             public void callBack(Ranking ranking) {
                 //Update to Ranking table
-                rankingTbl.child(ranking.getSlackId())
+                rankingTbl.child(ranking.getUserId())
                         .setValue(ranking);
                 //showRanking();  // After upload, we will sort Ranking table and show result
 
@@ -89,7 +89,7 @@ public class RankingFragment extends Fragment {
             @Override
             protected void populateViewHolder(RankingViewHolder viewHolder, final Ranking model, int position) {
 
-                viewHolder.text_name.setText(model.getSlackId());
+                viewHolder.text_name.setText(model.getUserId());
                 viewHolder.text_score.setText(String.valueOf(model.getScore()));
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
@@ -97,7 +97,7 @@ public class RankingFragment extends Fragment {
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         Intent scoreDetail = new Intent(getActivity(), ScoreDetail.class);
-                        scoreDetail.putExtra("viewUser", model.getSlackId());
+                        scoreDetail.putExtra("viewUser", model.getUserId());
                         startActivity(scoreDetail);
 
                     }
@@ -111,8 +111,8 @@ public class RankingFragment extends Fragment {
     }
 
 
-    private void updateScore(final String slackId, final RankingCallBack<Ranking> callback) {
-        questionScore.orderByChild("user").equalTo(slackId)
+    private void updateScore(final String userId, final RankingCallBack<Ranking> callback) {
+        questionScore.orderByChild("user").equalTo(userId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -120,7 +120,7 @@ public class RankingFragment extends Fragment {
                             QuestionScore ques = data.getValue(QuestionScore.class);
                             sum += Integer.parseInt(ques.getScore());
                         }
-                        Ranking ranking = new Ranking(slackId,sum);
+                        Ranking ranking = new Ranking(userId,sum);
                         callback.callBack(ranking);
                     }
 
